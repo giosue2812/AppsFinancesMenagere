@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[SensibleData]
+(
+	IdSensible INT NOT NULL IDENTITY (1,1),
+	AddStreet NVARCHAR(100) NOT NULL,
+	AddPostalCode NVARCHAR(100) NOT NULL,
+	AddCountry NVARCHAR(100) NOT NULL,
+	AddNumber NVARCHAR(100) NOT NULL
+	CONSTRAINT PK_SensibleData PRIMARY KEY (IdSensible)
+)
