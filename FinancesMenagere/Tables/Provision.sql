@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Provision]
 (
 	IdProvision INT NOT NULL IDENTITY (1,1),
-	Price DECIMAL NOT NULL,
+	Price DECIMAL(5,2) NOT NULL,
 	IdOrganization INT NOT NULL,
 	IdOutPut INT NOT NULL,
 	CONSTRAINT PK_Provision PRIMARY KEY (IdProvision),

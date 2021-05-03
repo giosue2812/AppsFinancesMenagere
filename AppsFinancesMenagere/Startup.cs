@@ -1,3 +1,5 @@
+using DAL.Repository;
+using DAL.Repository.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ServiceLayer.Services;
+using ServiceLayer.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +32,11 @@ namespace AppsFinancesMenagere
         {
 
             services.AddControllers();
+            services.AddSingleton<IBillService, BillService>();
+            services.AddSingleton<IBillRepository,BillRepository>();
             services.AddSwaggerGen(c =>
             {
+                c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Documentation : Finances Menagere Apps", Version = "v1" });
             });
         }

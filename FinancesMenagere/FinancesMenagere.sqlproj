@@ -57,6 +57,11 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Procedures" />
+    <Folder Include="Views" />
+    <Folder Include="Procedures\Bill" />
+    <Folder Include="Views\Bill" />
+    <Folder Include="Script" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Bill.sql" />
@@ -69,5 +74,13 @@
     <Build Include="Tables\OutPut.sql" />
     <Build Include="Tables\InPut.sql" />
     <Build Include="Tables\Account.sql" />
+    <Build Include="Procedures\Bill\P_AddBill.sql" />
+    <Build Include="Views\Bill\V_Bill.sql" />
+    <Build Include="Procedures\Bill\P_UpdateBill.sql" />
+    <Build Include="Procedures\Bill\P_DeleteBill.sql" />
+    <Build Include="Procedures\Bill\P_GetOneBill.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script\S_Bill.sql" />
   </ItemGroup>
 </Project>
