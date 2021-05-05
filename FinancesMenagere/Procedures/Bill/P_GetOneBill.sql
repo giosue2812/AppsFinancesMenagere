@@ -2,5 +2,5 @@
 	@IdBill int
 AS
 BEGIN
-	SELECT * FROM V_Bill WHERE IdBill = @IdBill
+	SELECT * FROM V_BillWithOrganization WHERE IdBill = @IdBill
 END

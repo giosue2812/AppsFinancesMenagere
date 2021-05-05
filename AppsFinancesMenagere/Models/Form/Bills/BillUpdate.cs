@@ -1,21 +1,22 @@
-﻿using ServiceLayer.Models.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceLayer.Models.Form
+namespace AppsFinancesMenagere.Models.Form.Bills
 {
     /// <summary>
-    /// Class to describe a Bill Update
+    /// Class to describe a Billform
     /// </summary>
-    public class BillUpdate:IEntity<int>
+    public class BillUpdate
     {
         public int Id { get; set; }
         public decimal Balance { get; set; }
+        [DataType("current_date")]
         public DateTime Deadline { get; set; }
+        [MaxLength(1000)]
         public string Note { get; set; }
-        //public int IdOrganization { get; set; }
+        public int IdOrganization { get; set; }
     }
 }

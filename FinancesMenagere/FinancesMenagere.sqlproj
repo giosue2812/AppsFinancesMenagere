@@ -62,6 +62,8 @@
     <Folder Include="Procedures\Bill" />
     <Folder Include="Views\Bill" />
     <Folder Include="Script" />
+    <Folder Include="Procedures\Organization" />
+    <Folder Include="Views\Organization" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Bill.sql" />
@@ -79,6 +81,12 @@
     <Build Include="Procedures\Bill\P_UpdateBill.sql" />
     <Build Include="Procedures\Bill\P_DeleteBill.sql" />
     <Build Include="Procedures\Bill\P_GetOneBill.sql" />
+    <Build Include="Views\Organization\V_Organization.sql" />
+    <Build Include="Views\V_BillWithOrganization.sql" />
+    <Build Include="Procedures\Organization\P_AddOrganization.sql" />
+    <Build Include="Procedures\Organization\P_UpdateOrganization.sql" />
+    <Build Include="Procedures\Organization\P_GetOneOrganization.sql" />
+    <Build Include="Procedures\Organization\P_SwitchIsActiveOrganization.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\S_Bill.sql" />

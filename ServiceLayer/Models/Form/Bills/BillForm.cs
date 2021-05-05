@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ServiceLayer.Models.Form
+namespace ServiceLayer.Models.Form.Bills
 {
     /// <summary>
     /// Class to describe a Bill form
@@ -14,6 +10,6 @@ namespace ServiceLayer.Models.Form
         public decimal Balance { get; set; }
         public DateTime Deadline { get; set; }
         public string Note { get; set; }
-        //public int IdOrganization { get; set; }
+        public int IdOrganization { get; set; }
     }
 }

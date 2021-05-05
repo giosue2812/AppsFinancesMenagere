@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository.Interfaces
 {
-    public interface IRepository<TEntity, TKey> where TEntity:IEntity<TKey>
+    public interface IRepository<TBody,TEntity, TKey> where TEntity:IEntity<TKey>
     {
         /// <summary>
         /// Function to Create a new Entity
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>int of id created</returns>
-        int Create(TEntity entity);
+        int Create(TBody entity);
         /// <summary>
         /// Function to Get an Entity from Tkey
         /// </summary>

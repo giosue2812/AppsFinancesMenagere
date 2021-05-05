@@ -1,15 +1,12 @@
-﻿using AppsFinancesMenagere.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+
 
 namespace AppsFinancesMenagere.Models
 {
     /// <summary>
     /// Class to describe a Bill for a GetAll and Get
     /// </summary>
-    public class BillGet:IEntity<int>
+    public class BillGet
     {
         public int Id { get; set; }
         public decimal Balance { get; set; }

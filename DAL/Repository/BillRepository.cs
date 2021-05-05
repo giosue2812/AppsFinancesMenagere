@@ -13,7 +13,7 @@ namespace DAL.Repository
     /// <summary>
     /// Class to describe a Bill Repository
     /// </summary>
-    public class BillRepository : RepositoryBase<Bill,int>,IBillRepository
+    public class BillRepository : RepositoryBase<Bill,Bill,int>,IBillRepository
     {
         public override IEnumerable<Bill> GetAll()
         {
@@ -34,7 +34,7 @@ namespace DAL.Repository
             command.AddParameter("@Balance", entity.Balance);
             command.AddParameter("@Deadline", entity.Deadline);
             command.AddParameter("@Note", entity.Note);
-            //command.AddParameter("@IdOrganization",entity.IdOrganization);
+            command.AddParameter("@IdOrganization",entity.IdOrganization);
             int idCreated = (int)Connection.ExecuteScalar(command);
             if (idCreated == 0) throw new ArgumentException("Error raise during insertion");
             else return idCreated;
@@ -51,7 +51,7 @@ namespace DAL.Repository
             command.AddParameter("@Balance", entity.Balance);
             command.AddParameter("@Deadline", entity.Deadline);
             command.AddParameter("@Note", entity.Note);
-            //command.AddParameter("@IdOrganization", entity.IdOrganization);
+            command.AddParameter("@IdOrganization", entity.IdOrganization);
             Bill bill = Connection.ExecuteReader(command,(b)=>b.ToDalBill()).SingleOrDefault();
             if (bill == null) throw new ArgumentException("Error raise during Update or Bill not find");
             return bill;

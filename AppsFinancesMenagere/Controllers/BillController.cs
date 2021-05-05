@@ -1,14 +1,12 @@
 ﻿using AppsFinancesMenagere.Mappers;
 using AppsFinancesMenagere.Models;
-using AppsFinancesMenagere.Models.Form;
-using Microsoft.AspNetCore.Http;
+using AppsFinancesMenagere.Models.Form.Bills;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AppsFinancesMenagere.Controllers
 {

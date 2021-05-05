@@ -34,6 +34,8 @@ namespace AppsFinancesMenagere
             services.AddControllers();
             services.AddSingleton<IBillService, BillService>();
             services.AddSingleton<IBillRepository,BillRepository>();
+            services.AddSingleton<IOrganizationRepository, OrganizationRepository>();
+            services.AddSingleton<IOrganizationService, OrganizationService>();
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();
@@ -52,7 +54,7 @@ namespace AppsFinancesMenagere
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseRouting();
 
             app.UseAuthorization();

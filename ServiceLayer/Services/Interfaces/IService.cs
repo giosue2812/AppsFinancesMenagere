@@ -1,4 +1,4 @@
-﻿using ServiceLayer.Models.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer.Services.Interfaces
 {
-    public interface IService<TBody,TEntity,TKey> where TEntity:IEntity<TKey>
+    public interface IService<TBody,TEntity,TKey>
     {
         /// <summary>
         /// Function to Create a new Entity

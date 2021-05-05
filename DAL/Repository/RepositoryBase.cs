@@ -15,7 +15,7 @@ namespace DAL.Repository
     /// </summary>
     /// <typeparam name="TEntity">Type Entity</typeparam>
     /// <typeparam name="TKey">Type Key</typeparam>
-    public abstract class RepositoryBase<TEntity,TKey>: IRepository<TEntity,TKey> where TEntity:IEntity<TKey>
+    public abstract class RepositoryBase<TBody,TEntity,TKey>: IRepository<TBody,TEntity,TKey> where TEntity:IEntity<TKey>
     {
         protected Connection Connection { get; }
         public RepositoryBase()
@@ -38,6 +38,6 @@ namespace DAL.Repository
         /// </summary>
         /// <param name="entity">Entity</param>
         /// <returns>int of id created</returns>
-        public abstract int Create(TEntity entity);
+        public abstract int Create(TBody entity);
     }
 }

@@ -1,8 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[P_UpdateBill]
 	@IdBill int,
-	@Balance DECIMAL(5,2),
+	@Balance DECIMAL(20,2),
 	@Deadline Date,
-	@Note nvarchar(1000)
+	@Note nvarchar(1000),
+	@IdOrganization int
 AS
 BEGIN
 	SET NOCOUNT OFF;
@@ -10,7 +11,8 @@ BEGIN
 	UPDATE Bill SET 
 		Balance = @Balance,
 		Deadline = @Deadline,
-		NOTE = @Note
+		NOTE = @Note,
+		IdOrganization = @IdOrganization
 		WHERE
 			IdBill = @IdBill
 		SELECT * FROM V_Bill WHERE IdBill = @IdBill

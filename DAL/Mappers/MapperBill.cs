@@ -29,7 +29,7 @@ namespace DAL.Mappers
                 PaymentDate = record["PaymentDate"] == DBNull.Value ? null : (DateTime)record["PaymentDate"],
                 Postponement = record["Postponement"] == DBNull.Value ? null:(DateTime)record["Postponement"],
                 Note = record["NOTE"] == DBNull.Value ? null: (string)record["NOTE"],
-                IdOrganization = record["IdOrganization"] == DBNull.Value ? null:(int)record["IdOrganization"]
+                IdOrganization = (int)record["IdOrganization"]
             };
         }
     }

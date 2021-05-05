@@ -1,4 +1,5 @@
 ﻿using DAL.Models;
+using DAL.Models.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository.Interfaces
 {
-    public interface IBillRepository:IRepository<Bill,Bill,int>
+    public interface IOrganizationRepository:IRepository<Organization,VOrganization,int>
     {
         /// <summary>
         /// Function to delete a Bill
         /// </summary>
         /// <param name="id">int id of Bill</param>
         /// <returns>bool</returns>
-        bool Delete(int id);
+        bool SwitchIsActive(int Id);
         /// <summary>
-        /// Function to update a Bill
+        /// Function to Update a organization
         /// </summary>
-        /// <param name="entity">Bill</param>
-        /// <returns>Bill</returns>
-        Bill Update(Bill entity);
+        /// <param name="entity">Organization</param>
+        /// <returns>Organization</returns>
+        VOrganization Update(Organization entity);
     }
 }

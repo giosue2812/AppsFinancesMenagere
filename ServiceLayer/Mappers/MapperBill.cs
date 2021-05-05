@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using S = ServiceLayer.Models;
+﻿using S = ServiceLayer.Models;
 using D = DAL.Models;
 
 namespace ServiceLayer.Mappers
@@ -34,7 +29,7 @@ namespace ServiceLayer.Mappers
         /// </summary>
         /// <param name="bill">ServiceLayer BillForm</param>
         /// <returns>Dal Bill</returns>
-        public static D.Bill ToDal(this S.Form.BillForm bill)
+        public static D.Bill ToDal(this S.Form.Bills.BillForm bill)
         {
             if (bill == null) return null;
             return new D.Bill
@@ -49,7 +44,7 @@ namespace ServiceLayer.Mappers
         /// </summary>
         /// <param name="bill">ServiceLayer Bill</param>
         /// <returns>Dal Bill</returns>
-        public static D.Bill ToDal(this S.Form.BillUpdate bill)
+        public static D.Bill ToDal(this S.Form.Bills.BillUpdate bill)
         {
             if (bill == null) return null;
             return new D.Bill

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using A = AppsFinancesMenagere.Models;
+﻿using A = AppsFinancesMenagere.Models;
 using S = ServiceLayer.Models;
 
 namespace AppsFinancesMenagere.Mappers
@@ -33,15 +29,16 @@ namespace AppsFinancesMenagere.Mappers
         /// </summary>
         /// <param name="bill">Api BillUpdate</param>
         /// <returns>ServiceLayer BillUpdate</returns>
-        public static S.Form.BillUpdate ToServiceLayers(this A.Form.BillUpdate bill)
+        public static S.Form.Bills.BillUpdate ToServiceLayers(this A.Form.Bills.BillUpdate bill)
         {
             if (bill == null) return null;
-            return new S.Form.BillUpdate
+            return new S.Form.Bills.BillUpdate
             {
                 Id = bill.Id,
                 Balance = bill.Balance,
                 Deadline = bill.Deadline,
-                Note = bill.Note
+                Note = bill.Note,
+                IdOrganization = bill.IdOrganization
             };
         }
         /// <summary>
@@ -49,10 +46,10 @@ namespace AppsFinancesMenagere.Mappers
         /// </summary>
         /// <param name="billForm"></param>
         /// <returns></returns>
-        public static S.Form.BillForm ToServiceLayer(this A.Form.BillForm billForm)
+        public static S.Form.Bills.BillForm ToServiceLayer(this A.Form.Bills.BillForm billForm)
         {
             if (billForm == null) return null;
-            return new S.Form.BillForm
+            return new S.Form.Bills.BillForm
             {
                 Balance = billForm.Balance,
                 Deadline = billForm.Deadline,

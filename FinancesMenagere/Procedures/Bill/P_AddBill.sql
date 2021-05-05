@@ -1,8 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[P_AddBill]
-	@Balance DECIMAL(5,2),
+	@Balance DECIMAL(20,2),
 	@Deadline Date,
-	@Note NVARCHAR(1000)
+	@Note NVARCHAR(1000),
+	@IdOrganization INT
 AS
 BEGIN
-	INSERT INTO Bill (Balance,Deadline,NOTE) OUTPUT inserted.IdBill VALUES(@Balance,@Deadline,@Note) 
+	INSERT INTO Bill (Balance,Deadline,NOTE,IdOrganization) OUTPUT inserted.IdBill VALUES(@Balance,@Deadline,@Note,@IdOrganization) 
 END

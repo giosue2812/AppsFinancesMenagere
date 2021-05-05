@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AppsFinancesMenagere.Models.Form
+namespace AppsFinancesMenagere.Models.Form.Bills
 {
     /// <summary>
     /// Class to describe a Billform
@@ -16,6 +16,7 @@ namespace AppsFinancesMenagere.Models.Form
         public DateTime Deadline { get; set; }
         [MaxLength(1000)]
         public string Note { get; set; }
+        public int IdOrganization { get; set; }
     }
 }
     
