@@ -10,7 +10,7 @@ namespace AppsFinancesMenagere.Mappers
         /// </summary>
         /// <param name="bill">ServiceLayer Bill</param>
         /// <returns>Api BillGet</returns>
-        public static A.BillGet ToApi(this S.Bill bill)
+        public static A.BillGet ToApi(this S.Views.VBillWithOrganization bill)
         {
             if (bill == null) return null;
             return new A.BillGet
@@ -21,7 +21,9 @@ namespace AppsFinancesMenagere.Mappers
                 IdOrganization = bill.IdOrganization,
                 Note = bill.Note,
                 PaymentDate = bill.PaymentDate,
-                Postponement = bill.Postponement
+                Postponement = bill.Postponement,
+                Organization = bill.Organization,
+                OrName = bill.OrName
             };
         }
         /// <summary>
@@ -54,6 +56,20 @@ namespace AppsFinancesMenagere.Mappers
                 Balance = billForm.Balance,
                 Deadline = billForm.Deadline,
                 Note = billForm.Note
+            };
+        }
+        /// <summary>
+        /// Mapper to API BillDatePostponement to ServiceLayer BillDatePostponement
+        /// </summary>
+        /// <param name="form">Api BillDatePostponement</param>
+        /// <returns>ServiceLayer BillDatePostponement</returns>
+        public static S.Form.Bills.BillDatePostponement ToServiceLayer(this A.Form.Bills.BillDatePostponement form)
+        {
+            if (form == null) return null;
+            return new S.Form.Bills.BillDatePostponement
+            {
+                Id = form.Id,
+                DatePostponement = form.DatePostponement
             };
         }
     }

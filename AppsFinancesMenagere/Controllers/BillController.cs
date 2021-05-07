@@ -38,7 +38,7 @@ namespace AppsFinancesMenagere.Controllers
         /// <param name="id">int Id of bill</param>
         /// <returns>IActionResult</returns>
         [SwaggerOperation("Get One Bill By Id")]
-        [SwaggerResponse(200, "Return One bill by id")]
+        [SwaggerResponse(200, "Return One bill by id",typeof(BillGet))]
         [HttpGet("{Id}")]
         public IActionResult Get([FromRoute, SwaggerParameter("Id of Bill", Required = true)] int Id)
         {
@@ -94,7 +94,7 @@ namespace AppsFinancesMenagere.Controllers
         /// <returns></returns>
         [SwaggerOperation("Delete Bill")]
         [SwaggerResponse(200, "Return Bool",typeof(bool))]
-        [SwaggerResponse(400, "Error raise during deletion or Bill not find")]
+        [SwaggerResponse(400, "Error raise during deletion or Bill not found")]
         [HttpDelete("{Id}")]
         public IActionResult Delete([FromRoute,SwaggerParameter("Id of Bill to delete",Required = true)] int Id)
         {
@@ -106,6 +106,46 @@ namespace AppsFinancesMenagere.Controllers
             {
                 return new BadRequestObjectResult(e.Message);
             }
+        }
+        /// <summary>
+        /// Function to pay a bill
+        /// </summary>
+        /// <param name="Id">int id of Bill</param>
+        /// <returns>IActionResult</returns>
+        [SwaggerOperation("Payement of Bill")]
+        [SwaggerResponse(200,"Return a bool",typeof(bool))]
+        [SwaggerResponse(400, "Error raise during deletion or Bill not found")]
+        [HttpGet("payement/{Id}")]
+        public IActionResult Payement([FromRoute,SwaggerParameter("Id of bill to delete",Required = true)]int Id)
+        {
+            try
+            {
+                return Ok(_service.Payement(Id));
+            }
+            catch(ArgumentNullException e)
+            {
+                return new BadRequestObjectResult(e.Message);
+            }
+        }
+        /// <summary>
+        /// Function to add a Date Postponement
+        /// </summary>
+        /// <param name="form">BillDatePostponement</param>
+        /// <returns>IActionResult</returns>
+        [SwaggerOperation("Date postponement")]
+        [SwaggerResponse(200,"Return bool",typeof(bool))]
+        [SwaggerResponse(400, "Error raise during deletion or Bill not found")]
+        [HttpPut("DatePostponement")]
+        public IActionResult DatePostponement([FromBody,SwaggerRequestBody("Form to add a date postponement",Required = true)]BillDatePostponement form)
+        {
+            try
+            {
+                return Ok(_service.DatePostponement(form.ToServiceLayer()));
+            }
+            catch(ArgumentNullException e)
+            {
+                return new BadRequestObjectResult(e.Message);
+            };
         }
     }
 }

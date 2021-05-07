@@ -87,6 +87,8 @@
     <Build Include="Procedures\Organization\P_UpdateOrganization.sql" />
     <Build Include="Procedures\Organization\P_GetOneOrganization.sql" />
     <Build Include="Procedures\Organization\P_SwitchIsActiveOrganization.sql" />
+    <Build Include="Procedures\Bill\P_BillPayement.sql" />
+    <Build Include="Procedures\Bill\P_Postponement.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\S_Bill.sql" />

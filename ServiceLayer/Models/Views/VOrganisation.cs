@@ -19,5 +19,6 @@ namespace ServiceLayer.Models.Views
         public string Tel2 { get; set; }
         public string Email { get; set; }
         public string NameContact { get; set; }
+        public bool IsActive { get;set; }
     }
 }

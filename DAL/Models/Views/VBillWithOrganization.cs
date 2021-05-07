@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DAL.Models.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace AppsFinancesMenagere.Models
+namespace DAL.Models.Views
 {
-    /// <summary>
-    /// Class to describe a Bill for a GetAll and Get
-    /// </summary>
-    public class BillGet
+    public class VBillWithOrganization:IEntity<int>
     {
         public string OrName { get; set; }
         public string Organization { get; set; }

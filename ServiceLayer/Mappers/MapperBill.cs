@@ -10,10 +10,10 @@ namespace ServiceLayer.Mappers
         /// </summary>
         /// <param name="entity">Dal Bill</param>
         /// <returns>ServiceLayer Bill</returns>
-        public static S.Bill ToServiceLayer (this D.Bill entity)
+        public static S.Views.VBillWithOrganization ToServiceLayer(this D.Views.VBillWithOrganization entity)
         {
             if (entity == null) return null;
-            return new S.Bill
+            return new S.Views.VBillWithOrganization
             {
                 Id = entity.Id,
                 Balance = entity.Balance,
@@ -21,7 +21,9 @@ namespace ServiceLayer.Mappers
                 Note = entity.Note,
                 IdOrganization = entity.IdOrganization,
                 PaymentDate = entity.PaymentDate,
-                Postponement = entity.Postponement
+                Postponement = entity.Postponement,
+                Organization = entity.Organization,
+                OrName = entity.OrName
             };
         }
         /// <summary>
@@ -53,6 +55,20 @@ namespace ServiceLayer.Mappers
                 Balance = bill.Balance,
                 Deadline = bill.Deadline,
                 Note = bill.Note
+            };
+        }
+        /// <summary>
+        /// Map ServiceLayer to Dal BillDatePostponement 
+        /// </summary>
+        /// <param name="bill">ServiceLayer BillDatePostponement</param>
+        /// <returns>Dal BillDatePostponement</returns>
+        public static D.Form.BillDatePostponement ToDal(this S.Form.Bills.BillDatePostponement bill)
+        {
+            if (bill == null) return null;
+            return new D.Form.BillDatePostponement
+            {
+                Id = bill.Id,
+                DatePostponement = bill.DatePostponement
             };
         }
     }

@@ -24,7 +24,9 @@ namespace AppsFinancesMenagere.Mappers
                 OrName = entity.OrName,
                 Tel1 = entity.Tel1,
                 Tel2 = entity.Tel2,
-                TypeOrganization = entity.TypeOrganization
+                TypeOrganization = entity.TypeOrganization,
+                IsActive = entity.IsActive
+                
             };
         }
         /// <summary>

@@ -14,7 +14,7 @@ namespace DAL.Mappers
         /// Map IDataRecord to Organization
         /// </summary>
         /// <param name="record">IDataRecord</param>
-        /// <returns>Organization</returns>
+        /// <returns>VBillWithOrganization</returns>
         public static VOrganization ToDal(this IDataRecord record)
         {
             if (record == null) return null;
@@ -26,7 +26,8 @@ namespace DAL.Mappers
                 Tel1 = record["Tel1"] == DBNull.Value ? null : (string)record["Tel1"],
                 Tel2 = record["Tel2"] == DBNull.Value ? null : (string)record["Tel2"],
                 Email = record["Email"] == DBNull.Value ? null : (string)record["Email"],
-                NameContact = record["NameContact"] == DBNull.Value ? null : (string)record["NameContact"]
+                NameContact = record["NameContact"] == DBNull.Value ? null : (string)record["NameContact"],
+                IsActive = (bool)record["IsActive"]
             };
         }
     }
