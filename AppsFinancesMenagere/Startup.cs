@@ -36,6 +36,8 @@ namespace AppsFinancesMenagere
             services.AddSingleton<IBillRepository,BillRepository>();
             services.AddSingleton<IOrganizationRepository, OrganizationRepository>();
             services.AddSingleton<IOrganizationService, OrganizationService>();
+            services.AddSingleton<ISensibleDataRepository, SensibleDataRepository>();
+            services.AddSingleton<ISensibleDataService, SensibleDataService>();
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();

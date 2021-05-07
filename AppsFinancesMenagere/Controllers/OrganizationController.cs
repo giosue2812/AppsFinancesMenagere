@@ -15,8 +15,10 @@ namespace AppsFinancesMenagere.Controllers
     public class OrganizationController : ControllerBase
     {
         private IOrganizationService _service;
-        public OrganizationController(IOrganizationService service)
+        private ISensibleDataService _sensibleDataService;
+        public OrganizationController(IOrganizationService service,ISensibleDataService sensibleDataService)
         {
+            _sensibleDataService = sensibleDataService;
             _service = service;
         }
         /// <summary>
@@ -106,6 +108,14 @@ namespace AppsFinancesMenagere.Controllers
             {
                 return new BadRequestObjectResult(e.Message);
             }
+        }
+        [HttpGet("OrganizationSensibleData/{Id}")]
+        public IActionResult OrganizationGetSensibleData(int Id)
+        {
+            OrganizationGetSensibleData organizationGetSensibleData = new OrganizationGetSensibleData();
+            organizationGetSensibleData.organizationGet = _service.Get(Id).ToApi();
+            organizationGetSensibleData.SensibleDataGetByOrganization = _sensibleDataService.Get(Id).ToApi();
+            return Ok(organizationGetSensibleData);
         }
     }
 }
