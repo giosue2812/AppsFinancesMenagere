@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE [dbo].[P_AddRole]
+	@RLabel NVARCHAR(50)
+AS
+BEGIN
+	INSERT INTO [ROLE] (RLabel) OUTPUT inserted.IdRole VALUES (@RLabel)
+END

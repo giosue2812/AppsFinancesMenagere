@@ -21,7 +21,7 @@ namespace DAL.Repository
         public override VSensibleDataByOrganization Get(int Id)
         {
             Command command = new Command("P_GetOneSensibleDataByOrganization", true);
-            command.AddParameter("@IdOrganization", Id);
+            command.AddParameter("@IdSensible", Id);
             return Connection.ExecuteReader(command, (s) => s.ToDalSensibleData()).SingleOrDefault();
         }
         public override int Create(SensibleData entity)
@@ -31,6 +31,7 @@ namespace DAL.Repository
             command.AddParameter("@AddPostalCode", entity.AddPostalCode);
             command.AddParameter("@AddCountry", entity.AddCountry);
             command.AddParameter("@AddNumber", entity.AddNumber);
+            command.AddParameter("@AddCity", entity.AddCity);
             int idCreated = (int)Connection.ExecuteScalar(command);
             if (idCreated == 0) throw new ArgumentNullException("Error raise during the insertion");
             else return idCreated;
@@ -48,6 +49,7 @@ namespace DAL.Repository
             command.AddParameter("@AddPostalCode", entity.AddPostalCode);
             command.AddParameter("@AddCountry", entity.AddCountry);
             command.AddParameter("@AddNumber", entity.AddNumber);
+            command.AddParameter("@AddCity", entity.AddCity);
             VSensibleDataByOrganization vSensibleDataByOrganization = Connection.ExecuteReader(command, (s) => s.ToDalSensibleData()).SingleOrDefault();
             if (vSensibleDataByOrganization == null) throw new ArgumentNullException("Error during update");
             else return vSensibleDataByOrganization;

@@ -19,7 +19,9 @@ namespace DAL.Mappers
                 AddPostalCode = (string)record["AddPostalCode"],
                 AddStreet = (string)record["AddStreet"],
                 Id = (int)record["IdSensible"],
-                IdOrganization = (int)record["IdOrganization"]
+                IdOrganization = (int)record["IdOrganization"],
+                AddCity = (string)record["AddCity"],
+                OrName = (string)record["OrName"]
             };
         }
     }

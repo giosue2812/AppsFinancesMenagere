@@ -9,9 +9,12 @@ Modèle de script de post-déploiement
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-EXEC P_AddSensibleData 'Rue des peuplier','1485','Belgique',10;
-EXEC P_AddSensibleData 'Rue des chanson','1455','Belgique',20;
-EXEC P_AddSensibleData 'Rue des garçons','1457','Belgique',30;
+EXEC P_AddRole 'Default';
+EXEC P_AddRole 'Tresorie';
+EXEC P_AddRole 'Course';
+EXEC P_AddSensibleData 'Rue des peuplier','1485','Belgique',10,'Louvain';
+EXEC P_AddSensibleData 'Rue des chanson','1455','Belgique',20,'Bruxelle'
+EXEC P_AddSensibleData 'Rue des garçons','1457','Belgique',30,'Namur';
 EXEC P_AddOrganization 'Voo','Communication','023554565',null,'voo@voo.be','Chantal',1;
 EXEC P_AddOrganization 'Brico','Magasin','025543654',null,null,null,2;
 EXEC P_AddOrganization 'Peugeot','Garage','025543654','0478565123','peugeot@p.be','Patrick',3;

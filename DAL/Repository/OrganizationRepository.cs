@@ -34,6 +34,7 @@ namespace DAL.Repository
             command.AddParameter("@Tel2",entity.Tel2);
             command.AddParameter("@Email", entity.Email);
             command.AddParameter("@NameContact", entity.NameContact);
+            command.AddParameter("@IdSensibleData", entity.IdSensibleData);
             int idCreated = (int)Connection.ExecuteScalar(command);
             if (idCreated == 0) throw new ArgumentException("Error raise during insertion");
             else return idCreated;

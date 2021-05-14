@@ -16,5 +16,6 @@ namespace ServiceLayer.Models
         public string AddPostalCode { get; set; }
         public string AddCountry { get; set; }
         public string AddNumber { get; set; }
+        public string AddCity { get; set; }
     }
 }

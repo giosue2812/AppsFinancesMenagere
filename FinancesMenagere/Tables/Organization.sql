@@ -8,7 +8,7 @@
 	Tel2 NVARCHAR(50) NULL,
 	Email NVARCHAR(50) NULL,
 	NameContact NVARCHAR(50) NULL,
-	IdSensibleData INT NOT NULL
+	IdSensibleData INT NULL
 	CONSTRAINT PK_Organization PRIMARY KEY (IdOrganization),
 	CONSTRAINT FK_Organization_SensibleData FOREIGN KEY (IdSensibleData) REFERENCES SensibleData(IdSensible)
 )

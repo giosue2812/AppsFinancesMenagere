@@ -44,7 +44,8 @@ namespace AppsFinancesMenagere.Mappers
                 Organization = form.Organization,
                 OrName = form.OrName,
                 Tel1 = form.Tel1,
-                Tel2 = form.Tel2
+                Tel2 = form.Tel2,
+                IdSensibleData = form.IdSensibleData
             };
         }
         /// <summary>

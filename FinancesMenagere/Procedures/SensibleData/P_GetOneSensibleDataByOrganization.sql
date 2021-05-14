@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[P_GetOneSensibleDataByOrganization]
-	@IdOrganization int
+	@IdSensible int
 AS
 BEGIN
-	SELECT * FROM V_SensibleDataByOrganization WHERE IdOrganization = @IdOrganization
+	SELECT * FROM V_SensibleDataByOrganization WHERE IdSensible = @IdSensible
 END

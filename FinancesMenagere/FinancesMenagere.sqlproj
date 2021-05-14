@@ -66,6 +66,8 @@
     <Folder Include="Views\Organization" />
     <Folder Include="Views\SensibleData" />
     <Folder Include="Procedures\SensibleData" />
+    <Folder Include="Procedures\Role" />
+    <Folder Include="Views\Role" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Bill.sql" />
@@ -95,6 +97,11 @@
     <Build Include="Views\Bill\V_BillWithOrganization.sql" />
     <Build Include="Views\SensibleData\V_SensibleDataByOrganization.sql" />
     <Build Include="Views\Bill\V_Bill.sql" />
+    <Build Include="Views\Role\V_Role.sql" />
+    <Build Include="Procedures\Role\P_AddRole.sql" />
+    <Build Include="Procedures\Role\P_UpdateRole.sql" />
+    <Build Include="Procedures\Role\P_GetOneRole.sql" />
+    <Build Include="Procedures\Role\P_DeleteRole.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\PostDeploiment.sql" />

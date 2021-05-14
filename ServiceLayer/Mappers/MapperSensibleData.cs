@@ -20,7 +20,9 @@ namespace ServiceLayer.Mappers
                 AddNumber = entity.AddNumber,
                 AddPostalCode = entity.AddPostalCode,
                 AddStreet = entity.AddStreet,
-                IdOrganization = entity.IdOrganization
+                IdOrganization = entity.IdOrganization,
+                AddCity = entity.AddCity,
+                OrName = entity.OrName
             };
         }
         /// <summary>
@@ -36,7 +38,8 @@ namespace ServiceLayer.Mappers
                 AddCountry = form.AddCountry,
                 AddNumber = form.AddNumber,
                 AddPostalCode = form.AddPostalCode,
-                AddStreet = form.AddStreet
+                AddStreet = form.AddStreet,
+                AddCity = form.AddCity
             };
         }
         /// <summary>
@@ -53,7 +56,8 @@ namespace ServiceLayer.Mappers
                 AddCountry = form.AddCountry,
                 AddNumber = form.AddNumber,
                 AddPostalCode = form.AddPostalCode,
-                AddStreet = form.AddStreet
+                AddStreet = form.AddStreet,
+                AddCity = form.AddCity
             };
         }
     }

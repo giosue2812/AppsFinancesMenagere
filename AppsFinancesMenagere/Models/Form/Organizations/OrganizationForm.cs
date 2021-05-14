@@ -24,5 +24,6 @@ namespace AppsFinancesMenagere.Models.Form.Organizations
         public string Email { get; set; }
         [MaxLength(50)]
         public string NameContact { get; set; }
+        public int IdSensibleData { get; set; }
     }
 }

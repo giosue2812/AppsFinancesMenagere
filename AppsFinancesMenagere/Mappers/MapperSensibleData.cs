@@ -15,7 +15,9 @@ namespace AppsFinancesMenagere.Mappers
                 AddNumber = entity.AddNumber,
                 AddPostalCode = entity.AddPostalCode,
                 AddStreet = entity.AddStreet,
-                IdOrganization = entity.IdOrganization
+                IdOrganization = entity.IdOrganization,
+                AddCity = entity.AddCity,
+                OrName = entity.OrName
             };
         }
         public static S.Form.SensibleData.SensibleDataForm ToServiceLayer(this A.Form.SensibleData.SensibleDataForm form)
@@ -26,7 +28,8 @@ namespace AppsFinancesMenagere.Mappers
                 AddCountry = form.AddCountry,
                 AddNumber = form.AddNumber,
                 AddPostalCode = form.AddPostalCode,
-                AddStreet = form.AddStreet
+                AddStreet = form.AddStreet,
+                AddCity = form.AddCity
             };
         }
         public static S.SensibleData ToServiceLayer(this A.Form.SensibleData.SensibleDataUpdate form)
@@ -38,7 +41,8 @@ namespace AppsFinancesMenagere.Mappers
                 AddCountry = form.AddCountry,
                 AddNumber = form.AddNumber,
                 AddPostalCode = form.AddPostalCode,
-                AddStreet = form.AddStreet
+                AddStreet = form.AddStreet,
+                AddCity = form.AddCity
             };
         }
     }

@@ -13,9 +13,11 @@ namespace ServiceLayer.Models.Views
     {
         public int IdOrganization { get; set; }
         public int Id { get; set; }
+        public string OrName { get; set; }
         public string AddCountry { get; set; }
         public string AddNumber { get; set; }
         public string AddStreet { get; set; }
         public string AddPostalCode { get; set; }
+        public string AddCity { get; set; }
     }
 }
