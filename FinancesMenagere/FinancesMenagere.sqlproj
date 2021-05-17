@@ -9,8 +9,7 @@
     <ProjectGuid>{e8605b0f-076d-40d1-9d95-13e7055c88d3}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
-    <RootPath>
-    </RootPath>
+    <RootPath />
     <RootNamespace>FinancesMenagere</RootNamespace>
     <AssemblyName>FinancesMenagere</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
@@ -48,7 +47,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
-    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
     <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
@@ -68,6 +66,9 @@
     <Folder Include="Procedures\SensibleData" />
     <Folder Include="Procedures\Role" />
     <Folder Include="Views\Role" />
+    <Folder Include="Procedures\User" />
+    <Folder Include="Views\User" />
+    <Folder Include="Function" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Bill.sql" />
@@ -102,6 +103,14 @@
     <Build Include="Procedures\Role\P_UpdateRole.sql" />
     <Build Include="Procedures\Role\P_GetOneRole.sql" />
     <Build Include="Procedures\Role\P_DeleteRole.sql" />
+    <Build Include="Views\User\V_User.sql" />
+    <Build Include="Procedures\User\P_AddUser.sql" />
+    <Build Include="Procedures\User\P_UpdateUser.sql" />
+    <Build Include="Procedures\User\P_ResetPassword.sql" />
+    <Build Include="Procedures\User\P_LoginUser.sql" />
+    <Build Include="Procedures\User\P_SwitchActiveUser.sql" />
+    <Build Include="Procedures\User\P_GetOneUser.sql" />
+    <Build Include="Function\F_CheckRole.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\PostDeploiment.sql" />

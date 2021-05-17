@@ -1,0 +1,8 @@
+﻿CREATE FUNCTION [dbo].[F_CheckRole](@BirthDate DATE)
+RETURNS INT
+AS
+BEGIN
+	DECLARE @IdRole INT
+	IF((YEAR(GETDATE()) - YEAR(@BirthDate))<18) SET @IdRole = 1
+	RETURN @IdRole
+END
