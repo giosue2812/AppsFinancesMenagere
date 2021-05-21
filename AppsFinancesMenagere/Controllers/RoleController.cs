@@ -41,9 +41,10 @@ namespace AppsFinancesMenagere.Controllers
         [HttpGet("{Id}")]
         [SwaggerOperation("Get one Role")]
         [SwaggerResponse(200, "Return one Role", typeof(Role))]
-        public IActionResult Get([FromRoute,SwaggerParameter("Id of Role",Required = true)] int Id)
+        public IActionResult Get([FromRoute,SwaggerParameter("Id of Role",Required = true)] int? Id)
         {
-            Role role = _service.Get(Id).ToApiRole();
+            if (Id == null) return Ok(0);
+            Role role = _service.Get((int)Id).ToApiRole();
             return Ok(role);
         }
         /// <summary>

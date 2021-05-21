@@ -37,6 +37,14 @@ namespace AppsFinancesMenagere.Controllers
             SensibleDataGetByOrganization sensibleDataGetByOrganization = _service.Get(Id).ToApi();
             return Ok(sensibleDataGetByOrganization);
         }
+        [SwaggerOperation("Get one sensible data")]
+        [SwaggerResponse(200,"Return one sensible data",typeof(SensibleData))]
+        [HttpGet("sensibleData/{Id}")]
+        public IActionResult GetSensibleData([FromRoute,SwaggerParameter("Id of SensibleData",Required = true)]int Id)
+        {
+            SensibleData sensible = _service.GetSensibleData(Id).ToApiSensibleData();
+            return Ok(sensible);
+        }
         [SwaggerOperation("Insert a new Sensible Data")]
         [SwaggerResponse(200, "Return an Id of Sensible Data Created", typeof(int))]
         [SwaggerResponse(400, "Error raise during the insertion")]

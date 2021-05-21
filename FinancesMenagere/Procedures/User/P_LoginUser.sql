@@ -9,7 +9,7 @@ BEGIN
 	ELSE
 		BEGIN
 			DECLARE @Password_Hash NVARCHAR(100)
-			SET @Password_Hash = HASHBYTES('SHA2_512',CONCAT(@Salt,@Password));
+			SET @Password_Hash = HASHBYTES('SHA2_512',CONCAT(@Salt,@Password,@Salt));
 			DECLARE @IdUser INT
 			SELECT @IdUser = IdUser FROM [User] WHERE Email LIKE @Email AND UPassword = @Password_Hash
 

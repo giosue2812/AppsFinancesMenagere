@@ -40,6 +40,13 @@ namespace AppsFinancesMenagere
             services.AddSingleton<ISensibleDataService, SensibleDataService>();
             services.AddSingleton<IRoleService, RoleService>();
             services.AddSingleton<IRoleRepository, RoleRepository>();
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IUserRepository, UserReopository>();
+            services.AddSingleton<IAccountService, AccountService>();
+            services.AddSingleton<IAccountRepository, AccountRepository>();
+            services.AddSingleton<IPersonalExpenseRepository, PersonalExpenseRepository>();
+            services.AddSingleton<IPersonalExpenseService, PersonalExpenseService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();

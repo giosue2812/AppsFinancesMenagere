@@ -26,6 +26,24 @@ namespace ServiceLayer.Mappers
             };
         }
         /// <summary>
+        /// Convert a Dal SensibleData to ServiceLayer SensibleData
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static S.SensibleData ToSeviceLayerSensibleData(this D.SensibleData entity)
+        {
+            if (entity == null) return null;
+            return new S.SensibleData
+            {
+                AddCity = entity.AddCity,
+                AddCountry = entity.AddCountry,
+                AddNumber = entity.AddNumber,
+                AddPostalCode = entity.AddPostalCode,
+                AddStreet = entity.AddStreet,
+                Id = entity.Id
+            };
+        }
+        /// <summary>
         /// Convert a ServiceLayer SensibleDataForm to Dal SensibleData
         /// </summary>
         /// <param name="form">ServiceLayer SensibleDataForm</param>

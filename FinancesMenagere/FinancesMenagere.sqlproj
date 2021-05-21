@@ -69,6 +69,10 @@
     <Folder Include="Procedures\User" />
     <Folder Include="Views\User" />
     <Folder Include="Function" />
+    <Folder Include="Views\Account" />
+    <Folder Include="Procedures\Account" />
+    <Folder Include="Views\PersonalExpense" />
+    <Folder Include="Procedures\PersonalExpense" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Bill.sql" />
@@ -111,6 +115,22 @@
     <Build Include="Procedures\User\P_SwitchActiveUser.sql" />
     <Build Include="Procedures\User\P_GetOneUser.sql" />
     <Build Include="Function\F_CheckRole.sql" />
+    <Build Include="Procedures\User\P_UpdateRoleUser.sql" />
+    <Build Include="Views\SensibleData\V_SensibleData.sql" />
+    <Build Include="Procedures\SensibleData\P_GetOneSensibleData.sql" />
+    <Build Include="Views\Account\V_Account.sql" />
+    <Build Include="Procedures\Account\P_AddAccount.sql" />
+    <Build Include="Procedures\Account\P_UpdateAccount.sql" />
+    <Build Include="Procedures\Account\P_SwitchActive.sql" />
+    <Build Include="Procedures\Account\P_GetOneAccount.sql" />
+    <Build Include="Procedures\Account\P_AddMandatary.sql" />
+    <Build Include="Views\Account\V_AccountByTitular.sql" />
+    <Build Include="Views\Account\V_AccountByMandatary.sql" />
+    <Build Include="Procedures\Account\P_GetAccountTitular.sql" />
+    <Build Include="Procedures\Account\P_GetAccountMandatary.sql" />
+    <Build Include="Views\PersonalExpense\V_PersonalExpense.sql" />
+    <Build Include="Procedures\PersonalExpense\P_AddPersonalExpense.sql" />
+    <Build Include="Procedures\PersonalExpense\P_GetOnePersonalExpense.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\PostDeploiment.sql" />

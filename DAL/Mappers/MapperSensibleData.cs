@@ -1,4 +1,5 @@
 ﻿
+using DAL.Models;
 using DAL.Models.Views;
 using System.Data;
 
@@ -22,6 +23,19 @@ namespace DAL.Mappers
                 IdOrganization = (int)record["IdOrganization"],
                 AddCity = (string)record["AddCity"],
                 OrName = (string)record["OrName"]
+            };
+        }
+        public static SensibleData ToDalSensible(this IDataRecord record)
+        {
+            if (record == null) return null;
+            return new SensibleData
+            {
+                AddCountry = (string)record["AddCountry"],
+                AddNumber = (string)record["AddNumber"],
+                AddPostalCode = (string)record["AddPostalCode"],
+                AddStreet = (string)record["AddStreet"],
+                Id = (int)record["IdSensible"],
+                AddCity = (string)record["AddCity"]
             };
         }
     }

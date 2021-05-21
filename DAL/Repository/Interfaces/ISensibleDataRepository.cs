@@ -11,6 +11,13 @@ namespace DAL.Repository.Interfaces
     public interface ISensibleDataRepository : IRepository<SensibleData, VSensibleDataByOrganization, int>
     {
         /// <summary>
+        /// Function to get one sensible data
+        /// </summary>
+        /// <param name="Id">is of Sensible data</param>
+        /// <returns>SensibleData</returns>
+        SensibleData GetSensibleData(int Id);
+
+        /// <summary>
         /// Function to update a Sensible data
         /// </summary>
         /// <param name="entity">SensibleData</param>

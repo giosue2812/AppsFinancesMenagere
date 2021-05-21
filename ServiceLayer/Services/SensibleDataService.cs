@@ -37,6 +37,15 @@ namespace ServiceLayer.Services
         {
             return _repository.Update(form.ToDal()).ToServiceLayer();
         }
+        /// <summary>
+        /// Function to get one sensible data
+        /// </summary>
+        /// <param name="Id">id of sensible data</param>
+        /// <returns>SensibleData</returns>
+        public SensibleData GetSensibleData(int Id)
+        {
+            return _repository.GetSensibleData(Id).ToSeviceLayerSensibleData();
+        }
 
     }
 }

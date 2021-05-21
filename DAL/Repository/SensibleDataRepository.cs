@@ -24,6 +24,17 @@ namespace DAL.Repository
             command.AddParameter("@IdSensible", Id);
             return Connection.ExecuteReader(command, (s) => s.ToDalSensibleData()).SingleOrDefault();
         }
+        /// <summary>
+        /// Function to get one sensible data
+        /// </summary>
+        /// <param name="Id">is of Sensible data</param>
+        /// <returns>SensibleData</returns>
+        public SensibleData GetSensibleData(int Id)
+        {
+            Command command = new Command("P_GetOneSensibleData", true);
+            command.AddParameter("@IdSensibleData", Id);
+            return Connection.ExecuteReader(command, (s) => s.ToDalSensible()).SingleOrDefault();
+        }
         public override int Create(SensibleData entity)
         {
             Command command = new Command("P_AddSensibleData", true);

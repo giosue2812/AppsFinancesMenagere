@@ -2,7 +2,7 @@
 	@IdUser INT
 AS
 BEGIN
-	IF((SELECT IdUser FROM V_User WHERE IdUser = @IdUser)IS NULL) RETURN NULL
+	IF((SELECT IdUser FROM [User] WHERE IdUser = @IdUser)IS NULL) RETURN NULL
 	UPDATE [User] SET
-		IsActive = (SELECT ~IsActive FROM [User] WHERE IdUser = @IdUser)
+		IsActive = (SELECT ~ IsActive FROM [User] WHERE IdUser = @IdUser) WHERE IdUser = @IdUser
 END

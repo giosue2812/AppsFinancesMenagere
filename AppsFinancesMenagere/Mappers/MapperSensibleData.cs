@@ -45,5 +45,18 @@ namespace AppsFinancesMenagere.Mappers
                 AddCity = form.AddCity
             };
         }
+        public static A.SensibleData ToApiSensibleData(this S.SensibleData entity)
+        {
+            if (entity == null) return null;
+            return new A.SensibleData
+            {
+                Id = entity.Id,
+                AddCountry = entity.AddCountry,
+                AddNumber = entity.AddNumber,
+                AddPostalCode = entity.AddPostalCode,
+                AddStreet = entity.AddStreet,
+                AddCity = entity.AddCity
+            };
+        }
     }
 }
