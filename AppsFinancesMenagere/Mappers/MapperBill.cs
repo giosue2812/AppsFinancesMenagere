@@ -55,7 +55,8 @@ namespace AppsFinancesMenagere.Mappers
             {
                 Balance = billForm.Balance,
                 Deadline = billForm.Deadline,
-                Note = billForm.Note
+                Note = billForm.Note,
+                IdOrganization = billForm.IdOrganization
             };
         }
         /// <summary>

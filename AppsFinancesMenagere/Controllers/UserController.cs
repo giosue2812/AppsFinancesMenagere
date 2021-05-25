@@ -9,10 +9,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AppsFinancesMenagere.Mappers;
 using AppsFinancesMenagere.Models.Form.User;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppsFinancesMenagere.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -23,6 +25,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("Get all User")]
         [SwaggerResponse(200, "Return a list of user", typeof(VUser))]
+        [Authorize(Roles = "Tresorie")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -31,6 +34,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("Get one user")]
         [SwaggerResponse(200, "Return one user", typeof(VUser))]
+        [Authorize(Roles = "Default,Tresorie,Course")]
         [HttpGet("{Id}")]
         public IActionResult Get([FromRoute, SwaggerParameter("Id of User")] int Id)
         {
@@ -40,6 +44,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Update an User")]
         [SwaggerResponse(200, "Return updated's user", typeof(VUser))]
         [SwaggerResponse(400, "Error raise during update")]
+        [Authorize(Roles = "Default")]
         [HttpPut]
         public IActionResult Update([FromBody, SwaggerRequestBody("Form to update an User")] UserForm form)
         {
@@ -56,6 +61,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Reset Password")]
         [SwaggerResponse(200, "Return bool", typeof(bool))]
         [SwaggerResponse(400, "Error during reset Password")]
+        [Authorize(Roles = "Default")]
         [HttpPut("ResetPassword")]
         public IActionResult ResetPassword([FromBody, SwaggerRequestBody("Reset Password form")] ResetPassword form)
         {
@@ -72,6 +78,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Switch Active User")]
         [SwaggerResponse(200, "Return bool", typeof(bool))]
         [SwaggerResponse(400, "Error during the switch")]
+        [Authorize(Roles = "Tresorie")]
         [HttpGet("SwitchActive/{Id}")]
         public IActionResult SwitchActiveUser([FromRoute, SwaggerParameter("Id of User")] int Id)
         {
@@ -88,6 +95,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Change role")]
         [SwaggerResponse(200,"Return bool")]
         [SwaggerResponse(400,"Error raise during change role")]
+        [Authorize(Roles = "Tresorie")]
         [HttpGet("RoleChange/{Id}/{IdRole}")]
         public IActionResult UpdateRoleChange([FromRoute,SwaggerParameter("id of user")] int Id, [FromRoute,SwaggerParameter("id of role")]int IdRole)
         {

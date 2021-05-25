@@ -68,5 +68,9 @@ namespace ServiceLayer.Services
         {
             return _repository.GetAccountByMandatary(IdUserMandatary).Select((AM) => AM.ToServiceLayerAccountMandatary());
         }
+        public int GetPersonalAccount(int IdUser)
+        {
+            return _repository.GetAccountPersonal(IdUser);
+        }
     }
 }

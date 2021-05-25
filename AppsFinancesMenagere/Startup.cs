@@ -1,5 +1,7 @@
+using AppsFinancesMenagere.Models;
 using DAL.Repository;
 using DAL.Repository.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,12 +10,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ServiceLayer.Services;
 using ServiceLayer.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AppsFinancesMenagere
@@ -32,6 +37,7 @@ namespace AppsFinancesMenagere
         {
 
             services.AddControllers();
+            services.AddSingleton(typeof(TokenManager));
             services.AddSingleton<IBillService, BillService>();
             services.AddSingleton<IBillRepository,BillRepository>();
             services.AddSingleton<IOrganizationRepository, OrganizationRepository>();
@@ -46,11 +52,60 @@ namespace AppsFinancesMenagere
             services.AddSingleton<IAccountRepository, AccountRepository>();
             services.AddSingleton<IPersonalExpenseRepository, PersonalExpenseRepository>();
             services.AddSingleton<IPersonalExpenseService, PersonalExpenseService>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("default", policy => policy.RequireClaim(ClaimTypes.Role));
+                options.AddPolicy("course", policy => policy.RequireClaim(ClaimTypes.Role));
+                options.AddPolicy("tresorie", policy => policy.RequireClaim(ClaimTypes.Role));
+            });
 
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(option => 
+                {
+                    option.RequireHttpsMetadata = false;
+                    option.SaveToken = true;
+                    option.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = Configuration["Token:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = Configuration["Token:Audience"],
+                        ValidateLifetime = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Token:Secret"]))
+                    };
+                });
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Documentation : Finances Menagere Apps", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization Header using the Bearer scheme"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[]{}
+                    }
+                });
             });
         }
 
@@ -67,7 +122,7 @@ namespace AppsFinancesMenagere
             app.UseHttpsRedirection();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

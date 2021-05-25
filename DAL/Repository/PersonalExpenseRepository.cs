@@ -18,9 +18,7 @@ namespace DAL.Repository
         }
         public override PersonalExpense Get(int Id)
         {
-            Command command = new Command("P_GetOnePersonalExpense", true);
-            command.AddParameter("@IdUser", Id);
-            return Connection.ExecuteReader(command, (p => p.ToDalPersonalExpense())).SingleOrDefault();
+            throw new NotImplementedException();
         }
         public override int Create(PersonalExpenseForm entity)
         {
@@ -34,7 +32,12 @@ namespace DAL.Repository
             if (idCreated == 0) throw new ArgumentException("Error raise during insertion");
             else return idCreated;
         }
-
-
+        public IEnumerable<PersonalExpense> GetExpenseByUser(int Id)
+        {
+            Command command = new Command("P_GetExpenseByUser", true);
+            command.AddParameter("@IdUser", Id);
+            return Connection.ExecuteReader(command, (p => p.ToDalPersonalExpense()));
+        }
+            
     }
 }

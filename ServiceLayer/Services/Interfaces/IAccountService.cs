@@ -21,6 +21,7 @@ namespace ServiceLayer.Services.Interfaces
         Account AddMandatary(int IdAccount, int IdMandatary);
         IEnumerable<VAccountByMandatary> GetAccountByMandatary(int IdUserMandatary);
         IEnumerable<VAccountByTitular> GetAccountByTitular(int IdUserTitular);
+        int GetPersonalAccount(int IdUser);
 
         /// <summary>
         /// Function to switch active an Account

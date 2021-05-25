@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository.Interfaces
 {
-    public interface IPersonalExpenseRepository:IRepository<PersonalExpenseForm,PersonalExpense,int>
+    public interface IPersonalExpenseRepository : IRepository<PersonalExpenseForm, PersonalExpense, int>
     {
+        IEnumerable<PersonalExpense> GetExpenseByUser(int Id);
     }
 }

@@ -131,6 +131,8 @@
     <Build Include="Views\PersonalExpense\V_PersonalExpense.sql" />
     <Build Include="Procedures\PersonalExpense\P_AddPersonalExpense.sql" />
     <Build Include="Procedures\PersonalExpense\P_GetOnePersonalExpense.sql" />
+    <Build Include="Procedures\PersonalExpense\P_GetExpenseByUser.sql" />
+    <Build Include="Procedures\Account\P_GetPersonalAccount.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\PostDeploiment.sql" />

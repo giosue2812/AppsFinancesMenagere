@@ -9,10 +9,13 @@ using System.Threading.Tasks;
 using AppsFinancesMenagere.Mappers;
 using Swashbuckle.AspNetCore.Annotations;
 using AppsFinancesMenagere.Models.Form.Role;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppsFinancesMenagere.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
+    [Authorize(Roles = "Tresorie")]
     [ApiController]
     public class RoleController : ControllerBase
     {

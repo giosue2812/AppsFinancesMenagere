@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace ServiceLayer.Services.Interfaces
 {
-    public interface IPersonalExpenseService:IService<PersonalExpenseForm,PersonalExpense,int>
+    public interface IPersonalExpenseService : IService<PersonalExpenseForm, PersonalExpense, int>
     {
+        IEnumerable<PersonalExpense> GetExpenseByUser(int Id);
     }
 }

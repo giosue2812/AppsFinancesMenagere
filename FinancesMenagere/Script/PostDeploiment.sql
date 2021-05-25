@@ -32,3 +32,4 @@ EXEC P_AddBill 301.99,'2021-06-25','Facture pour la voiture',3;
 EXEC P_AddPersonalExpense 3,'Croquette',10,'2021-05-10',3;
 EXEC P_AddPersonalExpense 4,'Jeux',50,'2021-05-1',1;
 EXEC P_AddPersonalExpense 2,'Robe',20,'2021-04-20',2;
+EXEC P_AddPersonalExpense 4,'Dvd',20,'2021-04-20',1;

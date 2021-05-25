@@ -10,9 +10,11 @@ using System.Threading.Tasks;
 using AppsFinancesMenagere.Mappers;
 using ServiceLayer.Services.Interfaces;
 using AppsFinancesMenagere.Models.Form.Account;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppsFinancesMenagere.Controllers
-{
+{   
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -26,6 +28,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("GetAll Account")]
         [SwaggerResponse(200, "Return a list of Account", typeof(Account))]
+        [Authorize(Roles = "Tresorie")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -34,6 +37,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("Get one Account")]
         [SwaggerResponse(200, "Return one Account", typeof(Account))]
+        [Authorize(Roles = "Default,Tresorie,Course")]
         [HttpGet("{Id}")]
         public IActionResult Get([FromRoute, SwaggerParameter("Id of Account")] int Id)
         {
@@ -43,6 +47,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Insert a new Account")]
         [SwaggerResponse(200, "Return Id created", typeof(int))]
         [SwaggerResponse(400, "Error raise during insertion")]
+        [Authorize(Roles = "Tresorie")]
         [HttpPost]
         public IActionResult Insert([FromBody, SwaggerRequestBody("Form to insert an Account")] AccountForm form)
         {
@@ -59,6 +64,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Update an Account")]
         [SwaggerResponse(200, "Return user updated", typeof(Account))]
         [SwaggerResponse(400, "Error raise during update")]
+        [Authorize(Roles = "Tresorie")]
         [HttpPut]
         public IActionResult Update([FromBody, SwaggerRequestBody("Form to update an Account", Required = true)] AccountFormUpdate form)
         {
@@ -75,6 +81,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Add Mandatary for Account")]
         [SwaggerResponse(200, "Return account with mandatary", typeof(Account))]
         [SwaggerResponse(400, "Error raise during insert mandatary")]
+        [Authorize(Roles = "Tresorie")]
         [HttpGet("mandatary/{IdUser}/{IdAccount}")]
         public IActionResult AddMandatary([FromRoute, SwaggerParameter("Id of User", Required = true)] int IdUser, [FromRoute, SwaggerParameter("Id of Account", Required = true)] int IdAccount)
         {
@@ -91,6 +98,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("SwitchActive account")]
         [SwaggerResponse(200, "Return bool", typeof(bool))]
         [SwaggerResponse(400, "Error raise during switch active account")]
+        [Authorize(Roles = "Tresorie")]
         [HttpGet("switchActive/{Id}")]
         public IActionResult SwitchActive([FromRoute, SwaggerRequestBody("Id of Account", Required = true)] int Id)
         {
@@ -106,6 +114,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("Get account by user mandatary")]
         [SwaggerResponse(200, "return a list of account by user mandatary", typeof(ListAccountByUserMandatary))]
+        [Authorize(Roles = "Default,Tresorie,Course")]
         [HttpGet("GetAccountMandatary/{Id}")]
         public IActionResult GetAccountMandatary([FromRoute, SwaggerParameter("Id of User Mandatary")] int Id)
         {
@@ -116,6 +125,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("Get account by user titular")]
         [SwaggerResponse(200, "return a list of account by user titular", typeof(ListAccountByUserTitular))]
+        [Authorize(Roles = "Default,Tresorie,Course")]
         [HttpGet("GetAccountTitular/{Id}")]
         public IActionResult GetAccountTitular([FromRoute,SwaggerParameter("Id of User Titular")]int Id)
         {

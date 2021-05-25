@@ -7,11 +7,14 @@ using System.Collections.Generic;
 using Swashbuckle.AspNetCore.Annotations;
 using AppsFinancesMenagere.Models.Form.Organizations;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppsFinancesMenagere.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Tresorie")]
     public class OrganizationController : ControllerBase
     {
         private IOrganizationService _service;

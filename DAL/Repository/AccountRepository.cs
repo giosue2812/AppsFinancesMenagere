@@ -93,5 +93,11 @@ namespace DAL.Repository
             command.AddParameter("@IdMandatary", IdUserMandatary);
             return Connection.ExecuteReader(command, (AT) => AT.ToDalAccountByMandatary());
         }
+        public int GetAccountPersonal(int IdUser)
+        {
+            Command command = new Command("P_GetPersonalAccount", true);
+            command.AddParameter("@IdUser", IdUser);
+            return (int)Connection.ExecuteScalar(command);
+        }
     }
 }

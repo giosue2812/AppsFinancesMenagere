@@ -38,7 +38,8 @@ namespace ServiceLayer.Mappers
             {
                 Balance = bill.Balance,
                 Deadline = bill.Deadline,
-                Note = bill.Note
+                Note = bill.Note,
+                IdOrganization = bill.IdOrganization
             };
         }
         /// <summary>
@@ -54,7 +55,8 @@ namespace ServiceLayer.Mappers
                 Id = bill.Id,
                 Balance = bill.Balance,
                 Deadline = bill.Deadline,
-                Note = bill.Note
+                Note = bill.Note,
+                IdOrganization = bill.IdOrganization
             };
         }
         /// <summary>

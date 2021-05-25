@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[P_GetOnePersonalExpense]
+﻿CREATE PROCEDURE [dbo].[P_GetExpenseByUser]
 	@IdUser int
 AS
 BEGIN

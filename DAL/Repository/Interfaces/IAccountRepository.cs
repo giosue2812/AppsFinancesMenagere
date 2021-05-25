@@ -20,6 +20,7 @@ namespace DAL.Repository.Interfaces
         Account AddMandatary(int IdAccount, int IdMandatary);
         IEnumerable<VAccountByMandatary> GetAccountByMandatary(int IdUserMandatary);
         IEnumerable<VAccountByTitular> GetAccountByTitular(int IdUserTitular);
+        int GetAccountPersonal(int IdUser);
 
         /// <summary>
         /// Function to active an Account

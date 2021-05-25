@@ -24,11 +24,15 @@ namespace ServiceLayer.Services
         }
         public PersonalExpense Get(int Id)
         {
-            return _repository.Get(Id).ToServiceLayerPersonalExpense();
+            throw new NotImplementedException();
         }
         public int Create(PersonalExpenseForm body)
         {
             return _repository.Create(body.ToDalPersonalExpenseForm());
+        }
+        public IEnumerable<PersonalExpense> GetExpenseByUser(int Id)
+        {
+            return _repository.GetExpenseByUser(Id).Select(p => p.ToServiceLayerPersonalExpense());
         }
     }
 }

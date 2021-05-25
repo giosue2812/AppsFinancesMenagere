@@ -1,6 +1,7 @@
 ﻿using AppsFinancesMenagere.Mappers;
 using AppsFinancesMenagere.Models;
 using AppsFinancesMenagere.Models.Form.SensibleData;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Interfaces;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace AppsFinancesMenagere.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
     public class SensibleDataController : ControllerBase
     {
@@ -23,6 +25,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("GetAll SensibleData for Organization")]
         [SwaggerResponse(200,"Return a list of SensibleData for Organization",typeof(SensibleDataGetByOrganization))]
+        [Authorize(Roles = "Tresorie")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -31,6 +34,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("Get SensibleData for Organization")]
         [SwaggerResponse(200,"Return a SensibleData for Organization",typeof(SensibleDataGetByOrganization))]
+        [Authorize(Roles = "Tresorie,Default,Course")]
         [HttpGet("{Id}")]
         public IActionResult Get([FromRoute,SwaggerParameter("Id of SensibleData",Required = true)]int Id)
         {
@@ -39,6 +43,7 @@ namespace AppsFinancesMenagere.Controllers
         }
         [SwaggerOperation("Get one sensible data")]
         [SwaggerResponse(200,"Return one sensible data",typeof(SensibleData))]
+        [Authorize(Roles = "Tresorie,Default,Course")]
         [HttpGet("sensibleData/{Id}")]
         public IActionResult GetSensibleData([FromRoute,SwaggerParameter("Id of SensibleData",Required = true)]int Id)
         {
@@ -48,6 +53,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Insert a new Sensible Data")]
         [SwaggerResponse(200, "Return an Id of Sensible Data Created", typeof(int))]
         [SwaggerResponse(400, "Error raise during the insertion")]
+        [Authorize(Roles = "Default")]
         [HttpPost]
         public IActionResult Create([FromBody,SwaggerRequestBody("Form to add a Sensible data",Required =true)]SensibleDataForm form)
         {
@@ -64,6 +70,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Update Sensible Data")]
         [SwaggerResponse(200,"Return Sensible data with Organization",typeof(SensibleDataGetByOrganization))]
         [SwaggerResponse(400, "Error raise during the update")]
+        [Authorize(Roles = "Default")]
         [HttpPut]
         public IActionResult Update([FromBody,SwaggerRequestBody("Form to update a Sensible Data",Required = true)]SensibleDataUpdate form)
         {

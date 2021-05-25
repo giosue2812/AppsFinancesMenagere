@@ -13,13 +13,20 @@ using System.Threading.Tasks;
 namespace AppsFinancesMenagere.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
     public class AuthController : ControllerBase
     {
         private IUserService _service;
-        public AuthController(IUserService service)
+        private IAccountService _accountService;
+        private IRoleService _roleService;
+        private TokenManager _tokenManager;
+        public AuthController(IUserService service, IAccountService accountService,IRoleService roleService,TokenManager tokenManager)
         {
             _service = service;
+            _accountService = accountService;
+            _roleService = roleService;
+            _tokenManager = tokenManager;
         }
 
         [SwaggerOperation("Insert a new user")]
@@ -46,8 +53,14 @@ namespace AppsFinancesMenagere.Controllers
         {
             try
             {
+                UserAuth userAuth = new UserAuth();
                 VUser user = _service.Login(form.ToServiceLayerLogin()).ToApiUser();
-                return Ok(user);
+                userAuth.Email = user.Email;
+                userAuth.IdUser = user.Id;
+                userAuth.IdAccount = _accountService.GetPersonalAccount(user.Id);
+                userAuth.Role = _roleService.Get((int)user.IdRole).ToApiRole().RLabel;
+                string token = _tokenManager.GenerateJwt(userAuth);
+                return Ok(token);
             }
             catch(ArgumentException e)
             {

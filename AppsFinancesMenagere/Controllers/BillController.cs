@@ -1,6 +1,7 @@
 ﻿using AppsFinancesMenagere.Mappers;
 using AppsFinancesMenagere.Models;
 using AppsFinancesMenagere.Models.Form.Bills;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
@@ -12,6 +13,7 @@ namespace AppsFinancesMenagere.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Tresorie")]
     [ApiController]
     public class BillController : ControllerBase
     {
