@@ -13,5 +13,6 @@ namespace ServiceLayer.Models.Form.Account
         public decimal Balance { get; set; }
         public string Note { get; set; }
         public int IdTitular { get; set; }
+        public bool IsAccountFamily { get; set; }
     }
 }

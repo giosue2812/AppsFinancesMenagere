@@ -53,7 +53,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Insert a new Sensible Data")]
         [SwaggerResponse(200, "Return an Id of Sensible Data Created", typeof(int))]
         [SwaggerResponse(400, "Error raise during the insertion")]
-        [Authorize(Roles = "Default")]
+        [Authorize(Roles = "Tresorie,Default,Course")]
         [HttpPost]
         public IActionResult Create([FromBody,SwaggerRequestBody("Form to add a Sensible data",Required =true)]SensibleDataForm form)
         {
@@ -70,7 +70,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerOperation("Update Sensible Data")]
         [SwaggerResponse(200,"Return Sensible data with Organization",typeof(SensibleDataGetByOrganization))]
         [SwaggerResponse(400, "Error raise during the update")]
-        [Authorize(Roles = "Default")]
+        [Authorize(Roles = "Tresorie,Default,Course")]
         [HttpPut]
         public IActionResult Update([FromBody,SwaggerRequestBody("Form to update a Sensible Data",Required = true)]SensibleDataUpdate form)
         {
@@ -78,6 +78,23 @@ namespace AppsFinancesMenagere.Controllers
             {
                 SensibleDataGetByOrganization sensibleDataGetByOrganization = _service.Update(form.ToServiceLayer()).ToApi();
                 return Ok(sensibleDataGetByOrganization);
+            }
+            catch(ArgumentNullException e)
+            {
+                return new BadRequestObjectResult(e.Message);
+            }
+        }
+        [SwaggerOperation("Update Sensible Data")]
+        [SwaggerResponse(200, "Return sensible data", typeof(SensibleData))]
+        [SwaggerResponse(400, "Error raise during the update")]
+        [Authorize(Roles = "Tresorie,Default,Course")]
+        [HttpPut("updateSensibleData")]
+        public IActionResult UpdateSensibleData([FromBody, SwaggerRequestBody("Form to update a sensible Data",Required = true)]SensibleDataUpdate form)
+        {
+            try
+            {
+                SensibleData sensibleData = _service.UpdateSensibleData(form.ToServiceLayer()).ToApiSensibleData();
+                return Ok(sensibleData);
             }
             catch(ArgumentNullException e)
             {

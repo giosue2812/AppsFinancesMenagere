@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[P_UpdateSensibleData]
+﻿CREATE PROCEDURE [dbo].[P_UpdateSensibleDataUser]
 	@IdSensible int,
 	@AddStreet NVARCHAR(100),
 	@AddPostalCode NVARCHAR(100),
@@ -15,12 +15,5 @@ BEGIN
 		AddNumber = @AddNumber,
 		AddCity = @AddCity
 	WHERE IdSensible = @IdSensible
-	IF((SELECT IdOrganization FROM V_SensibleDataByOrganization WHERE IdSensible = @IdSensible)IS NULL)
-		BEGIN
-			SELECT * FROM V_SensibleData WHERE IdSensible = @IdSensible
-		END
-	ELSE
-		BEGIN
-			SELECT * FROM V_SensibleDataByOrganization WHERE IdSensible = @IdSensible
-		END	
+	SELECT * FROM V_SensibleData WHERE IdSensible = @IdSensible
 END

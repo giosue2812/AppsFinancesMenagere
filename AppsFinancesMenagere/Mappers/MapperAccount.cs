@@ -17,7 +17,8 @@ namespace AppsFinancesMenagere.Mappers
                 IdMandatary = entity.IdMandatary,
                 IdTitular = entity.IdTitular,
                 IsActive = entity.IsActive,
-                Note = entity.Note
+                Note = entity.Note,
+                IsAccountFamily = entity.IsAccountFamily
             };
         }
         public static S.Form.Account.AccountForm ToServiceLayerAccountFormInsert(this A.Form.Account.AccountForm form)
@@ -28,7 +29,8 @@ namespace AppsFinancesMenagere.Mappers
                 Account = form.Account,
                 Balance = form.Balance,
                 IdTitular = form.IdTitular,
-                Note = form.Note
+                Note = form.Note,
+                IsAccountFamily = form.IsAccountFamily
             };
         }
         public static S.Form.Account.AccountForm ToServiceLayerAccountFormUpdate(this A.Form.Account.AccountFormUpdate form)
@@ -40,7 +42,8 @@ namespace AppsFinancesMenagere.Mappers
                 Account = form.Account,
                 Balance = form.Balance,
                 IdTitular = form.IdTitular,
-                Note = form.Note
+                Note = form.Note,
+                IsAccountFamily = form.IsAccountFamily
             };
         }
         public static A.VAccountByTitular ToApiAccountByTitular(this S.Views.VAccountByTitular entity)

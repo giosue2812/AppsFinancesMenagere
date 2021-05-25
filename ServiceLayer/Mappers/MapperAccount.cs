@@ -22,7 +22,8 @@ namespace ServiceLayer.Mappers
                 IdMandatary = entity.IdMandatary,
                 IdTitular = entity.IdTitular,
                 IsActive = entity.IsActive,
-                Note = entity.Note
+                Note = entity.Note,
+                IsAccountFamily = entity.IsAccountFamily
             };
         }
         /// <summary>
@@ -38,7 +39,8 @@ namespace ServiceLayer.Mappers
                 Account = form.Account,
                 Balance = form.Balance,
                 IdTitular = form.IdTitular,
-                Note = form.Note
+                Note = form.Note,
+                IsAccountFamily = form.IsAccountFamily
             };
         }
         /// <summary>
@@ -55,7 +57,8 @@ namespace ServiceLayer.Mappers
                 Account = form.Account,
                 Balance = form.Balance,
                 IdTitular = form.IdTitular,
-                Note = form.Note
+                Note = form.Note,
+                IsAccountFamily = form.IsAccountFamily
             };
         }
         public static S.Views.VAccountByTitular ToServiceLayerAccountTitular(this D.Views.VAccountByTitular entity)

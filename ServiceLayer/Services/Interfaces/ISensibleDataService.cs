@@ -20,5 +20,6 @@ namespace ServiceLayer.Services.Interfaces
         /// <param name="form">SensibleData</param>
         /// <returns>VSensibleDataByOrganization</returns>
         VSensibleDataByOrganization Update(SensibleData form);
+        SensibleData UpdateSensibleData(SensibleData form);
     }
 }

@@ -13,7 +13,7 @@ BEGIN
 	UPDATE Organization SET 
 		OrName = @OrName,
 		Organization = @Organization,
-		Tel1 = @Tel2,
+		Tel1 = @Tel1,
 		Tel2 = @Tel2,
 		Email = @Email,
 		NameContact = @NameContact,

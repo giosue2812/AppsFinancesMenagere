@@ -63,7 +63,8 @@ namespace ServiceLayer.Mappers
                 OrName = form.OrName,
                 Tel1 = form.Tel1,
                 Tel2 = form.Tel2,
-                TypeOrganization = form.Organization
+                TypeOrganization = form.Organization,
+                IdSensibleData = form.IdSensibleData
             };
         }
     }

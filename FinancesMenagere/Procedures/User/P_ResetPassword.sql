@@ -9,6 +9,6 @@ BEGIN
 	SET @Salt = (SELECT Salt FROM [User] WHERE IdUser = @IdUser)
 	DECLARE @Password_Hash NVARCHAR(100)
 	UPDATE [User] SET
-		UPassword = HASHBYTES('SHA2_512',CONCAT(@Salt,@UPassword))
+		UPassword = HASHBYTES('SHA2_512',CONCAT(@Salt,@UPassword,@Salt))
 		WHERE IdUser = @IdUser
 END

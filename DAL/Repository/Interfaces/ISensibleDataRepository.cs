@@ -23,5 +23,6 @@ namespace DAL.Repository.Interfaces
         /// <param name="entity">SensibleData</param>
         /// <returns>VSensibleDataByOrganization</returns
         VSensibleDataByOrganization Update(SensibleData entity);
+        SensibleData UpdateSensibleData(SensibleData entity);
     }
 }

@@ -54,6 +54,7 @@ namespace DAL.Repository
             command.AddParameter("@Tel2", entity.Tel2);
             command.AddParameter("@Email", entity.Email);
             command.AddParameter("@NameContact", entity.NameContact);
+            command.AddParameter("@IdSensibleData", entity.IdSensibleData);
             VOrganization vorganization = Connection.ExecuteReader(command, (o) => o.ToDal()).SingleOrDefault();
             if (vorganization == null) throw new ArgumentException("Error raise during Update or Bill not find");
             else return vorganization;

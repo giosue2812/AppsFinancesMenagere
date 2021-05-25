@@ -65,6 +65,18 @@ namespace DAL.Repository
             if (vSensibleDataByOrganization == null) throw new ArgumentNullException("Error during update");
             else return vSensibleDataByOrganization;
         }
-
+        public SensibleData UpdateSensibleData(SensibleData entity)
+        {
+            Command command = new Command("P_UpdateSensibleDataUser", true);
+            command.AddParameter("@IdSensible", entity.Id);
+            command.AddParameter("@AddStreet", entity.AddStreet);
+            command.AddParameter("@AddPostalCode", entity.AddPostalCode);
+            command.AddParameter("@AddCountry", entity.AddCountry);
+            command.AddParameter("@AddNumber", entity.AddNumber);
+            command.AddParameter("@AddCity", entity.AddCity);
+            SensibleData sensibleData = Connection.ExecuteReader(command, (s) => s.ToDalSensible()).SingleOrDefault();
+            if (sensibleData == null) throw new ArgumentNullException("Error during update");
+            else return sensibleData;
+        }
     }
 }

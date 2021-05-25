@@ -46,6 +46,10 @@ namespace ServiceLayer.Services
         {
             return _repository.GetSensibleData(Id).ToSeviceLayerSensibleData();
         }
+        public SensibleData UpdateSensibleData(SensibleData form)
+        {
+            return _repository.UpdateSensibleData(form.ToDal()).ToSeviceLayerSensibleData();
+        }
 
     }
 }

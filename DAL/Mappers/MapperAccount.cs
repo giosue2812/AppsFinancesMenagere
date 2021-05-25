@@ -28,7 +28,8 @@ namespace DAL.Mappers
                 IdMandatary = record["IdMandatary"] == DBNull.Value ? null : (int)record["IdMandatary"],
                 IdTitular = (int)record["IdTitular"],
                 IsActive = (bool)record["IsActive"],
-                Note = record["Note"] == DBNull.Value ? null : (string)record["Note"]
+                Note = record["Note"] == DBNull.Value ? null : (string)record["Note"],
+                IsAccountFamily = (bool)record["IsAccountFamily"]
             };
         }
 

@@ -32,6 +32,7 @@ namespace DAL.Repository
             command.AddParameter("@Balance", entity.Balance);
             command.AddParameter("@Note", entity.Note);
             command.AddParameter("@IdTitular", entity.IdTitular);
+            command.AddParameter("@IsAccountFamily", entity.IsAccountFamily);
             int idCreated = (int)Connection.ExecuteScalar(command);
             if (idCreated == 0) throw new ArgumentException("Error raise during insertion");
             return idCreated;
@@ -49,6 +50,7 @@ namespace DAL.Repository
             command.AddParameter("@Balance", entity.Balance);
             command.AddParameter("@Note", entity.Note);
             command.AddParameter("@IdTitular", entity.IdTitular);
+            command.AddParameter("@IsAccountFamily", entity.IsAccountFamily);
             Account account = Connection.ExecuteReader(command, (a) => a.ToDalAccount()).SingleOrDefault();
             if (account == null) throw new ArgumentException("Raise an error during an Update");
             else return account;

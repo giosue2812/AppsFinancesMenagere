@@ -2,7 +2,7 @@
 (
 	IdAccount INT NOT NULL IDENTITY (1,1),
 	Account NVARCHAR(100) NOT NULL,
-	Balance DECIMAL(20,2) NOT NULL,
+	Balance DECIMAL(20,2) DEFAULT 0,
 	CreationDate Date NOT NULL,
 	Note NVARCHAR(100) Null,
 	IdMandatary INT NULL,

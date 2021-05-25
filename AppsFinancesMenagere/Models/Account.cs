@@ -15,5 +15,6 @@ namespace AppsFinancesMenagere.Models
         public int? IdMandatary { get; set; }
         public int IdTitular { get; set; }
         public bool IsActive { get; set; }
+        public bool IsAccountFamily { get; set; }
     }
 }

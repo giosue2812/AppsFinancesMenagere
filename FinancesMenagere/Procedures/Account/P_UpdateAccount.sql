@@ -3,7 +3,8 @@
 	@Account NVARCHAR(100),
 	@Balance DECIMAL(20,2),
 	@Note NVARCHAR(100),
-	@IdTitular int
+	@IdTitular int,
+	@IsAccountFamily bit
 AS
 BEGIN
 	IF((SELECT IdAccount FROM V_Account WHERE IdAccount = @IdAccount)IS NULL) RETURN NULL
@@ -12,7 +13,8 @@ BEGIN
 			Account = @Account,
 			Balance = @Balance,
 			IdTitular = @IdTitular,
-			Note = @Note
+			Note = @Note,
+			IsAccountFamily = @IsAccountFamily
 		WHERE IdAccount = @IdAccount
 	SELECT * FROM V_Account WHERE IdAccount = @IdAccount
 END

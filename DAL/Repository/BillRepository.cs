@@ -80,7 +80,7 @@ namespace DAL.Repository
         {
             Command command = new Command("P_BillPayement", true);
             command.AddParameter("@IdBill", Id);
-            bool isPay = Connection.ExecuteNonQuery(command) == 1;
+            bool isPay = Connection.ExecuteNonQuery(command) == 2;
             if (!isPay) throw new ArgumentNullException("Error raise during update or Bill not found");
             else return isPay;
         }
