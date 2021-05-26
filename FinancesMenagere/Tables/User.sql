@@ -10,7 +10,7 @@
 	UPassword NVARCHAR(100) NOT NULL,
 	Salt NVARCHAR(100) NOT NULL,
 	IdSensibleData INT NOT NULL,
-	IdRole INT NULL,
+	IdRole INT NULL DEFAULT 1,
 	CONSTRAINT PK_User PRIMARY KEY (IdUser),
 	CONSTRAINT FK_User_SensibleData FOREIGN KEY (IdSensibleData) REFERENCES SensibleData(IdSensible),
 	CONSTRAINT FK_User_Role FOREIGN KEY (IdRole) REFERENCES [Role](IdRole)

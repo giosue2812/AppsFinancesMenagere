@@ -14,7 +14,6 @@ BEGIN
 		Email = @Email,
 		Tel = @Tel,
 		BirthDate = @BirthDate,
-		IdRole = dbo.F_CheckRole(@BirthDate),
 		IdSensibleData = @IdSensibleData 
 			WHERE IdUser = @IdUser
 

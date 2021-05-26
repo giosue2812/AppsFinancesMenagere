@@ -54,6 +54,7 @@ namespace AppsFinancesMenagere.Controllers
         [SwaggerResponse(200, "Return an Id of Sensible Data Created", typeof(int))]
         [SwaggerResponse(400, "Error raise during the insertion")]
         [Authorize(Roles = "Tresorie,Default,Course")]
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Create([FromBody,SwaggerRequestBody("Form to add a Sensible data",Required =true)]SensibleDataForm form)
         {

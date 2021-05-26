@@ -97,9 +97,17 @@ namespace DAL.Repository
         }
         public int GetAccountPersonal(int IdUser)
         {
-            Command command = new Command("P_GetPersonalAccount", true);
-            command.AddParameter("@IdUser", IdUser);
-            return (int)Connection.ExecuteScalar(command);
+            try
+            {
+                Command command = new Command("P_GetPersonalAccount", true);
+                command.AddParameter("@IdUser", IdUser);
+                return Connection.ExecuteReader(command, (a) => { return (int)a["idAccount"]; }).SingleOrDefault();
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            
         }
     }
 }

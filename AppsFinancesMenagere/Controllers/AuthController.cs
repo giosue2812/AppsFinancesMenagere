@@ -1,6 +1,7 @@
 ﻿using AppsFinancesMenagere.Mappers;
 using AppsFinancesMenagere.Models;
 using AppsFinancesMenagere.Models.Form.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Interfaces;
@@ -14,6 +15,7 @@ namespace AppsFinancesMenagere.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
+    [AllowAnonymous]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -57,12 +59,13 @@ namespace AppsFinancesMenagere.Controllers
                 VUser user = _service.Login(form.ToServiceLayerLogin()).ToApiUser();
                 userAuth.Email = user.Email;
                 userAuth.IdUser = user.Id;
+
                 userAuth.IdAccount = _accountService.GetPersonalAccount(user.Id);
                 userAuth.Role = _roleService.Get((int)user.IdRole).ToApiRole().RLabel;
                 string token = _tokenManager.GenerateJwt(userAuth);
                 return Ok(token);
             }
-            catch(ArgumentException e)
+            catch(Exception e)
             {
                 return new BadRequestObjectResult(e.Message);
             }

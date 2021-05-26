@@ -9,7 +9,7 @@ namespace AppsFinancesMenagere.Models
     {
         public int IdUser { get; set; }
         public string Email { get; set; }
-        public int IdAccount { get; set; }
+        public object IdAccount { get; set; }
         public string Role { get; set; }
     }
 }
